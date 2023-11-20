@@ -1,19 +1,56 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+//Official Website------------------------------------------------------------
+import HomeView from '../views/OFFWEB/HomeView.vue'
+import WhatNew from '@/components/FeaturesOFFWeb/WhatNew.vue';
+import VMGO from '@/components/OtherInfo/VMGO.vue';
+//Login-----------------------------------------------------------------------
+import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
+
+//Manage----------------------------------------------------------------------
+
+
+//Features--------------------------------------------------------------------
+import Mobile from "@/components/FeaturesOFFWeb/Mobile.vue";
+
+
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
+  },
+  {
+    path: '/whats-new',
+    component: WhatNew,
+    children: [
+      // { path: 'latest-updates', component: LatestUpdates },
+      // { path: 'vacancy', component: Vacancy },
+      // { path: 'procurements', component: Procurements }, 
+      // { path: 'other-agencies', component: OtherAgencies },
+    ],
+  },
+  {
+    path: "/mobile",
+    name: 'mobile',
+    component: Mobile,
+  },
+  {
+    path: '/about-us/mission-vision/',
+    name: 'vmgo',
+    component: VMGO,
   }
 ]
 
