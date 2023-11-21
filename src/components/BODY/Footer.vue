@@ -39,7 +39,7 @@
   
   <style scoped>
   footer {
-    background-color: #3498db;
+    background-color: red;
     color: #fff;
     padding: 10px;
     position: fixed;

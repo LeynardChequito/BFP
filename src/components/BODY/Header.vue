@@ -1,77 +1,59 @@
-<!-- Header.vue -->
 <template>
-    <v-app-bar app color="primary" dark>
-      <v-container>
-        <v-row align="center">
-          <v-col>
-            <v-btn text @click="goToHome">
-              Home
-            </v-btn>
-          </v-col>
-          <v-col>
-            <v-btn text @click="goToGoodGovernance">
-              Good Governance
-            </v-btn>
-          </v-col>
-          <v-col>
-            <v-btn text @click="goToDownloads">
-              Downloads
-            </v-btn>
-          </v-col>
-          <v-col>
-            <v-btn text @click="goToAboutUs">
-              About Us
-            </v-btn>
-          </v-col>
-          <v-col>
-            <v-btn text @click="goToContactUs">
-              Contact Us
-            </v-btn>
-          </v-col>
-          <v-col class="ml-auto">
-            <v-btn text>
-              {{ getCurrentTime() }}
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-app-bar>
-  </template>
-  
-  <script>
-  import moment from 'moment-timezone';
-  
-  export default {
-    methods: {
-      goToHome() {
-        // Logic to navigate to the Home page
-      },
-      goToGoodGovernance() {
-        // Logic to navigate to the Good Governance page
-      },
-      goToDownloads() {
-        // Logic to navigate to the Downloads page
-      },
-      goToAboutUs() {
-        this.$router.push({ name: 'vmgo' });
-      },
-      goToContactUs() {
-        // Logic to navigate to the Contact Us page
-      },
-      getCurrentTime() {
-        const philippineTime = moment().tz('Asia/Manila').format('MMMM D, YYYY h:mm A');
-        return `Philippine Time: ${philippineTime}`;
-      },
+  <v-app-bar app color="red">
+    <v-row align="center">
+
+        <v-img src="@/assets/Banner03_18Aug2018.png" alt="Logo" class="logo"></v-img>
+
+        <v-btn depressed @click="navigateTo('home')">Home</v-btn>
+        <v-btn depressed @click="navigateTo('aboutUs')">About Us</v-btn>
+        <v-btn depressed @click="navigateTo('contactUs')">Contact Us</v-btn>
+
+        <v-text-field label="Search" style="color: white;" hide-details></v-text-field>
+
+
+
+        <v-btn text>Philippine Standard Time: {{ philippineTime }}</v-btn>
+
+    </v-row>
+  </v-app-bar>
+</template>
+
+
+<script>
+import moment from 'moment-timezone';
+
+export default {
+  data() {
+    return {
+      philippineTime: this.getCurrentTime(),
+    };
+  },
+  methods: {
+    navigateTo(route) {
+      console.log(`Navigating to ${route}`);
+      if (route === 'home') {
+        this.$router.push('/home');
+      }
     },
-  };
-  </script>
-  
-  <style scoped>
-  /* Add your custom styles here */
-  .v-btn {
-    min-width: 80px; /* Adjust the minimum width of buttons */
-  }
-  
-  /* Optional: Add more styling based on your design preferences */
-  </style>
-  
+    getCurrentTime() {
+      return moment().tz('Asia/Manila').format('MMMM D, YYYY h:mm A');
+    },
+    updatePhilippineTime() {
+      setInterval(() => {
+        this.philippineTime = this.getCurrentTime();
+      }, 60000);
+    },
+  },
+  mounted() {
+    this.updatePhilippineTime();
+  },
+};
+</script>
+
+<style scoped>
+/* Add your custom styles here */
+.logo {
+  width: 500px;
+  height: 50px;
+}
+</style>
