@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
+
 //Official Website------------------------------------------------------------
 import HomeView from '../views/OFFWEB/HomeView.vue'
 import WhatNew from '@/components/FeaturesOFFWeb/WhatNew.vue';
@@ -12,11 +14,12 @@ import RegisterView from "../views/RegisterView.vue";
 
 
 //Features--------------------------------------------------------------------
-import Mobile from "@/components/FeaturesOFFWeb/Mobile.vue";
+
 
 
 
 const routes = [
+  
   {
     path: '/home',
     name: 'home',
@@ -33,26 +36,18 @@ const routes = [
     component: RegisterView,
   },
   {
-    path: '/whats-new',
-    component: WhatNew,
-    children: [
-      // { path: 'latest-updates', component: LatestUpdates },
-      // { path: 'vacancy', component: Vacancy },
-      // { path: 'procurements', component: Procurements }, 
-      // { path: 'other-agencies', component: OtherAgencies },
-    ],
-  },
-  {
-    path: "/mobile",
-    name: 'mobile',
-    component: Mobile,
-  },
-  {
     path: '/about-us/mission-vision/',
     name: 'vmgo',
     component: VMGO,
-  }
-]
+  },
+  {
+    path: "/what's-new/news-update",
+    name: 'news',
+    component: WhatNew,
+  },
+];
+
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

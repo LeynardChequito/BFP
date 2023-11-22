@@ -3,37 +3,29 @@
     <Header />
     <main>
       <Banner />
-      <v-container>
-        <!-- Existing Navigation Removed -->
+      <v-container justify-item:center class="custom-card">
         <v-row>
-          <!-- Local News and Announcements -->
-          <v-col>
-            <v-card>
-              <v-card-title>Local News and Announcements</v-card-title>
-              <v-card-text>
-                <!-- Add your content for local news and announcements -->
-                <router-link to="/local-news/category-1">Category 1</router-link>
-                <router-link to="/local-news/category-2">Category 2</router-link>
-                <!-- Add more as needed -->
-              </v-card-text>
-            </v-card>
-          </v-col>
+          <!-- BFP Section -->
+          <v-card class="bfp-card" @click="goToNews">
+            <v-card-text>
+              <v-text class="text-h6">News</v-text>
+            </v-card-text>
+          </v-card>
 
-          <!-- Global News and Announcements -->
-          <v-col>
-            <v-card>
-              <v-card-title>Global News and Announcements</v-card-title>
-              <v-card-text>
-                <!-- Add your content for global news and announcements -->
-                <router-link to="/global-news/category-1">Category 1</router-link>
-                <router-link to="/global-news/category-2">Category 2</router-link>
-                <!-- Add more as needed -->
-              </v-card-text>
-            </v-card>
-          </v-col>
+          <v-card class="bfp-card" @click="goToAnnouncements">
+            <v-card-text>
+              <v-text class="text-h6">Announcements</v-text>
+            </v-card-text>
+          </v-card>
+
+          <!-- Another Government Agency Section -->
+          <v-card class="gov-agency-card" @click="goToGovContent">
+            <v-card-text>
+              <v-text class="text-h6">Government Content</v-text>
+            </v-card-text>
+          </v-card>
         </v-row>
       </v-container>
-
       <router-view></router-view>
     </main>
     <Footer />
@@ -52,9 +44,39 @@ export default {
     Footer,
     Banner,
   },
+  methods: {
+    goToNews() {
+      this.$router.push({ name: 'news' });
+    },
+    goToAnnouncements() {
+      this.$router.push({ name: 'announcement' });
+    },
+    goToGovContent() {
+      this.$router.push({ name: 'gov-content' });
+    },
+  },
+  data() {
+    return {};
+  },
 };
 </script>
 
 <style lang="sass" scoped>
-/* Your existing styles */
+.text-h6
+  cursor: pointer
+
+.custom-card
+  display: flex
+  width: auto
+  margin-bottom: 16px
+
+.bfp-card, .gov-agency-card
+  border: 2px solid red
+  border-radius: 8px
+  margin-right: 10px
+  cursor: pointer
+  transition: background-color 0.3s
+
+.bfp-card:hover, .gov-agency-card:hover
+  background-color: #007BFF
 </style>
