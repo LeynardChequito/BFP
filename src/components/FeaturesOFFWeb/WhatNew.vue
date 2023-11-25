@@ -54,8 +54,8 @@ export default {
   },
   methods: {
     back() {
-      console.log('Back to Login');
-      this.$router.push({ name: 'login' });
+      console.log('Back to Home');
+      this.$router.push({ name: 'home' });
     },
   },
 };
