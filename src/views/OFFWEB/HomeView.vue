@@ -28,7 +28,7 @@
       </v-container>
       <router-view></router-view>
     </main>
-    <Footer />
+    <Footer :isVisible="isVisible" /> 
   </div>
 </template>
 
@@ -41,8 +41,13 @@ export default {
   name: 'home',
   components: {
     Header,
-    Footer,
     Banner,
+    Footer,
+  },
+  data() {
+    return {
+      isVisible: true,
+    };
   },
   methods: {
     goToNews() {
@@ -54,9 +59,6 @@ export default {
     goToGovContent() {
       this.$router.push({ name: 'gov-content' });
     },
-  },
-  data() {
-    return {};
   },
 };
 </script>
