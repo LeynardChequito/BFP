@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/OFFWEB/HomeView.vue'
 import WhatNew from '@/components/FeaturesOFFWeb/WhatNew.vue';
 import VMGO from '@/components/OtherInfo/VMGO.vue';
+import ContactUsView from '../views/ContactUsView.vue';
 //Login-----------------------------------------------------------------------
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
@@ -45,6 +46,12 @@ const routes = [
     name: 'news',
     component: WhatNew,
   },
+  {
+    path: "/contactUs",
+    name: 'contactUs',
+    component: ContactUsView,
+  },
+
 ];
 
 

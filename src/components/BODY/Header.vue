@@ -34,6 +34,9 @@ export default {
       if (route === 'home') {
         this.$router.push('/home');
       }
+      if (route === 'contactUs') {
+        this.$router.push('/contactUs');
+      }
     },
     getCurrentTime() {
       return moment().tz('Asia/Manila').format('MMMM D, YYYY h:mm A');
